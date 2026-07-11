@@ -1,16 +1,18 @@
+from email import message
 import json
 
 from tools.load_skill import load_skill
-from utils.logger import log_config, log_runtime, log_info, log_error, log_agent, log_tool
+from utils.logger import log_config, log_runtime, log_info, log_error, log_agent,log_reasoning, log_tool
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 from utils.models import get_agent_model
 from middlewares.skill_middleware import SkillMiddleware
 from langchain_core.utils.uuid import uuid7
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
+import asyncio
 
 
-def main():
+async def main():
     #initialize agent
     
     system_prompt = """You are the official AI representative for Daniel Rivero, a Software / AI Engineer.
@@ -44,13 +46,13 @@ Always stick to these directives.
     log_runtime(f"Starting conversation thread with ID: {thread_id}")
 
     while True:
-        user_input = input("User: ")
+        user_input = await asyncio.to_thread(input, "User: ")
         if user_input.lower() == "exit":
             break
 
-        stream = agent.stream_events(
+        stream = await agent.astream_events(
             {
-                "messages":[
+                "messages": [
                     HumanMessage(content=user_input)
                 ],
             },
@@ -58,14 +60,35 @@ Always stick to these directives.
             version='v3'
         )
         
-        for name, item in stream.interleave("messages","tool_calls","values"):
-            if name == "messages":
-                log_agent(item.text)
-            elif name == "tool_calls":
-                log_tool(f'{item.tool_name} called with input: {item.input}')
+        
+        async def consume_messages(stream):
+            async for message in stream.messages:
+                log_reasoning(await message.reasoning)
+                log_agent(await message.text)
+                
+        # async def consume_reasoning(stream):
+            # async for msg in stream.messages:
+                # log_reasoning(await msg.reasoning)
+
+        async def consume_tool_calls(stream):
+            async for call in stream.tool_calls:
+                log_tool(f"Tool call: {call.tool_name} with input: {call.input}")
+                
+        await asyncio.gather(consume_messages(stream), consume_tool_calls(stream))
+                
+                
+        # async for event in stream: 
+        #     method = event["method"]
+        #     data = event["params"]["data"]
+        #     # data_block = data[0]
+        #     # event_type = data_block.get("event", "")
+        #     # data_content = data_block.get("content", {})
+        #     # data_block_type = data_content.get("type", "")
+        #     log_info(f"Event data: {data}")
+        #     # if method == "messages" and event_type == "content_block_finish":
             
                 
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

@@ -20,7 +20,7 @@ class SkillMiddleware(AgentMiddleware):
             )
         self.skills_prompt = "\n".join(skills_list)
 
-    def wrap_model_call(
+    def awrap_model_call(
         self,
         request: ModelRequest,
         handler: Callable[[ModelRequest], ModelResponse],

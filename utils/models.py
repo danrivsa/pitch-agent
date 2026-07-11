@@ -66,6 +66,7 @@ def get_agent_model():
         return ChatGroq(
             model="openai/gpt-oss-120b",
             temperature=0,
+            reasoning_effort="medium",
             max_tokens=None,
             reasoning_format="parsed",
             timeout=None,

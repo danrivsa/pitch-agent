@@ -2,7 +2,6 @@
 
 **Contact Information**
 *   **Location:** Caracas, Venezuela
-*   **Portfolio:** https://danrivsa.github.io/portfolio/
 *   **Email:** danielrivero2000@gmail.com
 *   **Phone:** +58 424 125 2703
 
@@ -11,7 +10,7 @@
 ## Languages / Langues
 *   **Spanish / Espagnol:** Native
 *   **English / Anglais:** Bilingual / Bilangue
-*   **French / Français:** Intermediate / Intermédiaire
+*   **French / Français:** Advanced / Avancé
 
 ---
 
@@ -20,7 +19,7 @@
 ### CATHOLIC UNIVERSITY ANDRÉS BELLO / UNIVERSITÉ CATHOLIQUE ANDRÉS BELLO
 *   **Degree:** Bachelor's degree in Computer Science / Baccalauréat en Informatique
 *   **Location:** Caracas, Venezuela
-*   **Graduation Date:** March 2025 / Mars 2025
+*   **Graduated:** March 2025 / Mars 2025
 
 ---
 

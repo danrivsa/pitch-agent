@@ -52,6 +52,9 @@ def log_error(value: Any) -> None:
 def log_agent(value: Any) -> None:
     _log("AGENT", value, green)
     
+def log_reasoning(value: Any) -> None:
+    _log("REASONING", value, purple)
+    
 def log_runtime(value: Any) -> None:
     _log("RUNTIME", value, purple)
     
