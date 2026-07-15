@@ -29,7 +29,9 @@ async def main():
         async def consume_messages(stream):
             async for message in stream.messages:
                 log_reasoning(await message.reasoning)
-                log_agent(await message.text)
+                agent_msg = await message.text
+                if len(agent_msg) > 0:
+                    log_agent(agent_msg)
                 
         async def consume_tool_calls(stream):
             async for call in stream.tool_calls:

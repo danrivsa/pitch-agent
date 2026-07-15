@@ -58,6 +58,7 @@ def get_agent_model():
             reasoning_format="parsed",
             timeout=None,
             max_retries=2,
+            streaming=True
             # other params...
         )
     elif pk == "groq":
@@ -71,6 +72,7 @@ def get_agent_model():
             reasoning_format="parsed",
             timeout=None,
             max_retries=2,
+            streaming=True
             # other params...
         )
     else:
