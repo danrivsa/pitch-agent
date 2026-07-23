@@ -6,11 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from langchain.messages import HumanMessage
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from agent.pitch_agent import get_running_agent, get_config
+from agent.pitch_agent import get_running_agent, _get_config
 
 load_dotenv()
 agent_executor = get_running_agent()
-config = get_config()
 
 
 app = FastAPI()
@@ -25,6 +24,7 @@ app.add_middleware(
 
 class ChatPayload(BaseModel):
     message: str
+    thread_id: str = None 
 
 @app.get("/api/health")
 async def health_check():
@@ -32,7 +32,7 @@ async def health_check():
 
 @app.post("/api/chat/stream")
 async def stream_chat_api(payload: ChatPayload):
-    print(f"Received message: {payload.message}")
+    print(f"Received message: {payload.message} with thread_id: {payload.thread_id}")
     
     async def sse_generator():
         try:
@@ -43,7 +43,7 @@ async def stream_chat_api(payload: ChatPayload):
                     "messages": [HumanMessage(content=payload.message)],
                 },
                 version="v2",
-                config=config
+                config=_get_config(payload.thread_id)
             ):
                 kind = event["event"]
                 
