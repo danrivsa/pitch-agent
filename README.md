@@ -45,3 +45,38 @@ uv run main.py
 ```
 
 Type your message at the prompt. Type `exit` to quit.
+
+## Running the FastAPI Server
+
+Start the API server with Uvicorn:
+
+```bash
+uv run uvicorn api.api:app --host 0.0.0.0 --port 3000 --reload
+```
+
+The chat streaming endpoint is:
+
+```text
+POST /api/chat/stream
+```
+
+## Request Format
+
+The endpoint expects a JSON payload with a required `message` field:
+
+```json
+{
+	"message": "Can you summarize Daniel's backend experience?"
+}
+```
+
+Example `curl` request:
+
+```bash
+curl -N -X POST "http://localhost:3000/api/chat/stream" \
+	-H "Content-Type: application/json" \
+	-H "Accept: text/event-stream" \
+	-d '{"message":"Can you summarize Daniel\'s backend experience?"}'
+```
+
+The response is streamed as Server-Sent Events (`text/event-stream`) with events such as `message`, `reasoning`, `tool_start`, `tool_end`, and `error`.

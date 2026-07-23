@@ -17,7 +17,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("PORTFOLIO_URL","")],
+    allow_origins=[os.getenv("PORTFOLIO_URL","http://localhost:3000")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,6 +25,10 @@ app.add_middleware(
 
 class ChatPayload(BaseModel):
     message: str
+
+@app.post("/api/health_check")
+async def health_check():
+    return {"status": "ok"}
 
 @app.post("/api/chat/stream")
 async def stream_chat_api(payload: ChatPayload):
