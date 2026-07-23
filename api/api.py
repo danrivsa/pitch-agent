@@ -26,7 +26,7 @@ app.add_middleware(
 class ChatPayload(BaseModel):
     message: str
 
-@app.post("/api/health_check")
+@app.get("/api/health")
 async def health_check():
     return {"status": "ok"}
 
