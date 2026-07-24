@@ -4,7 +4,6 @@ import json
 from tools.load_skill import load_skill
 from utils.logger import log_config, log_runtime, log_info, log_error, log_agent,log_reasoning, log_tool
 from langchain.agents import create_agent
-from langgraph.checkpoint.memory import InMemorySaver
 from utils.models import get_agent_model
 from middlewares.skill_middleware import SkillMiddleware
 from langchain_core.utils.uuid import uuid7
@@ -45,7 +44,6 @@ def get_running_agent():
     tools = [load_skill]
     
     agent = create_agent(
-        checkpointer= InMemorySaver(),
         model=get_agent_model(),
         system_prompt=system_prompt,
         middleware=[SkillMiddleware()],
@@ -53,3 +51,5 @@ def get_running_agent():
     )
     
     return agent
+
+graph = get_running_agent()
