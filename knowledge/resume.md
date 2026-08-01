@@ -1,32 +1,9 @@
-# Daniel Rivero - Software Engineer
+# Daniel Rivero - Software Engineer / AI Engineer
 
-**Contact Information**
-*   **Location:** Caracas, Venezuela
-*   **Email:** danielrivero2000@gmail.com
-*   **Phone:** +58 424 125 2703
-
----
-
-## Languages / Langues
-*   **Spanish / Espagnol:** Native
-*   **English / Anglais:** Bilingual / Bilangue
-*   **French / Français:** Advanced / Avancé
-
----
-
-## Education / Formation
-
-### CATHOLIC UNIVERSITY ANDRÉS BELLO / UNIVERSITÉ CATHOLIQUE ANDRÉS BELLO
-*   **Degree:** Bachelor's degree in Computer Science / Baccalauréat en Informatique
-*   **Location:** Caracas, Venezuela
-*   **Graduated:** March 2025 / Mars 2025
-
----
-
-## English Version - Professional Summary & Experience
+## Professional Summary & Experience
 
 ### Summary
-I'm a software engineer with over 4 years of experience. I'm passionate about problem-solving and always eager to learn something new to help explore and implement innovative and creative solutions.
+Daniel is a software engineer and AI engineer with over 5 years of experience. He is passionate about problem-solving and always eager to learn something new to help explore and implement innovative and creative solutions.
 
 ### Professional Experience
 
@@ -51,32 +28,15 @@ I'm a software engineer with over 4 years of experience. I'm passionate about pr
 *   Maintained and enhanced the company's self-improvement platform for internal use, built with Angular, Node.js, and Microsoft SQL Server.
 *   Designed and executed a user activity reporting system in a CI/CD pipeline, achieving a 50% reduction in audit preparation time while enhancing the quality of insights derived from user behavior data for the self-improvement platform.
 
----
+## Languages 
+*   **Spanish:** Native
+*   **English:** Bilingual
+*   **French :** Advanced
+*   **German :**  Beginner
 
-## Version Française - Résumé Professionnel & Expérience
+## Education
 
-### Résumé
-Développeur logiciel avec plus de 4 ans d'expérience, passionné par la résolution de problèmes complexes. Toujours enthousiaste à l'idée d'apprendre de nouvelles technologies pour concevoir et mettre en œuvre des solutions innovantes et créatives.
-
-### Expérience Professionnelle
-
-#### MeshAI (Collaborative scheduling to end clinician burnout)
-*Poste: Ingénieur IA / ML* | *Lieu: Kingston, ON, Canada* | *Dates: Juin 2025 – Présent*
-*   Architecture et déploiement d'un flux de travail multi-agents optimisé par AWS avec traitement multi-étapes, permettant aux médecins d'interagir avec leurs plannings en langage naturel, atteignant un taux de précision de 96% entre les équipes.
-*   Implementation d'agents intelligents pour générer des règles de planification spécifiques respectant les contraintes du problème de satisfaction de contraintes (CSP) et effectuer des calculs de métriques sur les blocs de plannings via le langage naturel.
-*   Pionnier dans le développement d'une stratégie d'évaluation des performances des agents pour mesurer l'efficacité globale du système dans les flux de travail multi-agents.
-
-#### vOfiz Inc
-*Poste: Développeur Logiciel* | *Lieu: Texas, États-Unis* | *Dates: Oct 2024 – Présent*
-*   Direction de la transformation architecturale vers un système distribué, facilitant l'intégration de diverses solutions technologiques (y compris des plateformes no-code), améliorant l'agilité opérationnelle et optimisant les déploiements grâce aux pipelines CI/CD.
-*   Développement d'une solution de réception et de gestion de courrier optimisée par AWS, utilisant Angular et Xano pour gérer le cycle de vie de la correspondance client.
-
-#### Newtoms LLC
-*Poste: Développeur Logiciel Junior & Architecte de Solutions Cloud* | *Lieu: Géorgie, États-Unis* | *Dates: Jan 2023 – Mar 2025*
-*   Création d'un système de surveillance intelligent basé sur AWS et des modèles d'IA de vision par ordinateur pour automatiser la détection d'incidents.
-*   Développement d'AvatarX, une application SaaS propulsée par AWS, l'IA générative et les LLM, permettant aux clients de créer des avatars.
-
-#### PWC Venezuela
-*Poste: Collaborateur & Développeur Logiciel Junior (Services d'Assurance des Risques)* | *Lieu: Caracas, Venezuela* | *Dates: Mars 2021 – Déc 2022*
-*   Maintenance et amélioration de la plateforme interne de développement professionnel de l'entreprise, développée avec Angular, Node.js et Microsoft SQL Server.
-*   Développement d'un système de rapport d'activité des utilisateurs intégré dans une pipeline CI/CD, permettant de réduire de 50% le temps de préparation des audits tout en améliorant la pertinence des analyses comportementales sur la plateforme.
+### CATHOLIC UNIVERSITY ANDRÉS BELLO
+*   **Degree:** Bachelor's degree in Computer Science
+*   **Location:** Caracas, Venezuela
+*   **Graduated:** March 2025

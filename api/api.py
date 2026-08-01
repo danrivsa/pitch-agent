@@ -72,7 +72,7 @@ async def stream_chat_api(payload: ChatPayload):
                 elif kind == "on_tool_end":
                     yield f"event: tool_end\ndata: {json.dumps({'name': event['name']})}\n\n"
         except Exception as e:
-            # This logs the real issue to your FastAPI terminal!
+            # This logs the real issue to FastAPI terminal!
             print(f"STREAM ERROR DETECTED: {str(e)}")
             yield f"event: error\ndata: {json.dumps({'error': str(e)})}\n\n"
 
