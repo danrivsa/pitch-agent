@@ -1,7 +1,7 @@
 import os
 import json
 from fastapi import FastAPI, Request
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, Response
 from fastapi.middleware.cors import CORSMiddleware
 from langchain.messages import HumanMessage
 from pydantic import BaseModel
@@ -78,3 +78,10 @@ async def stream_chat_api(payload: ChatPayload):
 
     # Return a continuous streaming text response formatted as text/event-stream
     return StreamingResponse(sse_generator(), media_type="text/event-stream")
+
+
+@app.options("/api/chat/stream")
+async def chat_stream_options(request: Request):
+    # Lightweight handler for CORS preflight requests — helps avoid 400s behind proxies
+    print(f"Preflight OPTIONS for /api/chat/stream from: {request.client} headers: {dict(request.headers)}")
+    return Response(status_code=200)

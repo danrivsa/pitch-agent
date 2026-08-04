@@ -18,6 +18,9 @@ Daniel has participated in multiple game jams and has developed several games us
 - **Project:** [Charon's passage](https://danrivsa.itch.io/charons-passage)
   **Description:** A 2D survival  game developed in Unity during a 48-hour game jam. Implemented a wave-based enemy system with increasing difficulty and a scoring system, The game features charon's passage as a central theme, where players must navigate through the river styx to protect a soul to reach the afterlife.
 
+- **Project :** [Froggy's gem sack](https://danrivsa.itch.io/froggys-gem-sack)
+  **Description:** A 2D puzzle game made for Android with Libgdx. The player must match the gems to score points and earn a high score.
+
 ## Robotics and AI
 
 Daniel also has experience in robotics and AI, having worked on several projects involving computer vision, machine learning, and natural language processing. Here are some of the most relevant ones:
