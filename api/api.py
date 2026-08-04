@@ -16,8 +16,8 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("PORTFOLIO_URL","http://localhost:3000")],
-    allow_credentials=True,
+    allow_origins=[os.getenv("PORTFOLIO_URL")],
+    # allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -83,5 +83,6 @@ async def stream_chat_api(payload: ChatPayload):
 @app.options("/api/chat/stream")
 async def chat_stream_options(request: Request):
     # Lightweight handler for CORS preflight requests — helps avoid 400s behind proxies
+    print(f"Request: {request}")
     print(f"Preflight OPTIONS for /api/chat/stream from: {request.client} headers: {dict(request.headers)}")
     return Response(status_code=200)
