@@ -54,19 +54,33 @@ async def stream_chat_api(payload: ChatPayload):
                 
                 # 1. TEXT TOKENS STREAMING
                 if kind == "on_chat_model_stream":
-                    content = event["data"]["chunk"].content
-                    # Check for reasoning tokens if using a reasoning model (like deep thinking models)
-                    # Some models put thoughts in a separate property, others use a standard chunk
-                    metadata = event["data"]["chunk"].response_metadata
-                    
-                    # If the provider flags it explicitly as reasoning/thinking
-                    if "reasoning_content" in metadata or "reasoning" in metadata:
-                        reasoning_chunk = metadata.get("reasoning_content") or metadata.get("reasoning")
-                        yield f"event: reasoning\ndata: {json.dumps({'text': reasoning_chunk})}\n\n"
-                    
+                    chunk = event["data"]["chunk"]
+                    # Reasoning tokens come through additional_kwargs (e.g. Groq's
+                    # reasoning_format="parsed" streams them as reasoning_content)
+                    reasoning = chunk.additional_kwargs.get("reasoning_content")
+                    # Google Gemini 3 streams reasoning as thinking/reasoning content
+                    # blocks inside chunk.content instead
+                    if not reasoning and isinstance(chunk.content, list):
+                        thinking = [
+                            b.get("thinking") or b.get("reasoning")
+                            for b in chunk.content
+                            if isinstance(b, dict)
+                            and b.get("type") in ("thinking", "reasoning")
+                        ]
+                        reasoning = "".join(thinking)
+                    if reasoning:
+                        yield f"event: reasoning\ndata: {json.dumps({'text': reasoning})}\n\n"
                     # Standard text tokens
-                    elif content:
-                        yield f"event: message\ndata: {json.dumps({'text': content})}\n\n"
+                    elif chunk.content:
+                        if isinstance(chunk.content, list):
+                            text = "".join(
+                                b.get("text", "")
+                                for b in chunk.content
+                                if isinstance(b, dict) and b.get("type") == "text"
+                            )
+                        else:
+                            text = chunk.content
+                        yield f"event: message\ndata: {json.dumps({'text': text})}\n\n"
 
                 # 2. TOOL CALL DETECTED (Agent decided to open your resume/bio file)
                 elif kind == "on_tool_start":
